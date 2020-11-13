@@ -1,23 +1,38 @@
 @layout('layouts/app')
 
 @section('content')
+<section class="flex justify-center h-screen py-10">
+  <div class="m-auto" style="width:22rem">
+    <article class="border px-10 py-6 bg-white">
+      <h1 class="text-4xl text-center mb-10">Adonisgram</h1>
     <form action="/login" method="post">
         <div>
           <label for="email"></label>
-          <input type="email" name="email" id="email" />
+          <input class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600" type="email" name="email" id="email" placeholder="Mobile Number of Email" />
           @if(flashMessages.has('errors.email'))
           <small>{{ flashMessages.get("errors.email") }}</small>
           @endif
         </div>
         <div>
           <label for="password"></label>
-          <input type="password" name="password" id="password" />
+          <input class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600" type="password" name="password" id="password" placeholder="Password" />
           @if(flashMessages.has('errors.password'))
           <small>{{ flashMessages.get("errors.password") }}</small>
           @endif
         </div>
-        <div>
-          <input type="submit" value="Login" />
+        <div class="my-3">
+          <input class="w-full text-white rounded py-1 px-2" style="background-color: rgba(var(--d69,0,149,246),1);" type="submit" value="Login" />
         </div>
       </form>
+      <p class="text-center text-gray-600 text-sm py-3">--------- OR --------</p>
+      <div class="text-center text-blue-900">
+        <p class="text-sm font-semibold">Log in with Facebook</p>
+        <small>Forgot Password ?</small>
+      </div>
+    </article>
+    <article class="border mt-3 text-center py-8 bg-white">
+      Don't have an account? <a href="/signup" class="text-blue-500">Sign Up</a>
+    </article>
+    </div>
+    </section>
 @endsection
