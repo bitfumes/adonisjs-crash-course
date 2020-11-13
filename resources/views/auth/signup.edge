@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <section>
+@layout('layouts/app')
+
+@section('content')
+    <section class="flex justify-center py-10">
+      <article>
+      <h1>Adonisgram</h1>
+      <h2>Sign up to see photos and videos from your friends.</h2>
+      <button>Log in with Facebook</button>
+      <p>--- OR ----</p>
       <form action="/signup" method="post">
         <div>
           <label for="name"></label>
@@ -42,6 +41,10 @@
           <input type="submit" value="Sign Up" />
         </div>
       </form>
+      <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>
+    </article>
+  <article>
+    Have an account? <a href="/login">Log in</a>
+  </article>
     </section>
-  </body>
-</html>
+@endsection
