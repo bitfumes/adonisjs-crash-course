@@ -4,7 +4,9 @@
     I am profile
     {{ auth.user.name }}
 
+    @if(auth.user.email_verified_at === null)
     <form action="/verify-email" method="post">
         <input type="submit" value="Resend">
     </form>
+    @endif
 @endsection
