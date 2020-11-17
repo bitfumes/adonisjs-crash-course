@@ -24,14 +24,7 @@ export default class AuthController {
         user.password = req.password;
         await user.save();
 
-        // send verification email
-        Mail.send((message) => {
-            message
-                .from('verify@adonisgram.com')
-                .to(user.email)
-                .subject('Please verify your email')
-                .htmlView('emails/verify', { user })
-        })
+        user?.sendVerificationEmail()
 
         return response.redirect("/");
     }

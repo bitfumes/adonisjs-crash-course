@@ -3,4 +3,8 @@
 @section('content')
     I am profile
     {{ auth.user.name }}
+
+    <form action="/verify-email" method="post">
+        <input type="submit" value="Resend">
+    </form>
 @endsection
