@@ -2,8 +2,8 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
 import Hash from '@ioc:Adonis/Core/Hash'
 import Mail from '@ioc:Adonis/Addons/Mail'
-import { nanoid } from 'nanoid'
 import Env from '@ioc:Adonis/Core/Env'
+import Route from '@ioc:Adonis/Core/Route'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -34,10 +34,8 @@ export default class User extends BaseModel {
     }
   }
 
-  public async sendVerificationEmail(session) {
-    const token = nanoid()
-    session.put(`token-${this.id}`, token)
-    const url = `${Env.get('APP_URL')}/confirm-email/${this.id}/${token}`
+  public async sendVerificationEmail() {
+    const url = Env.get('APP_URL') + Route.makeSignedUrl('verifyEmail', { params: { email: this.email }, expiresIn: '30m', })
     Mail.send((message) => {
       message
         .from('verify@adonisgram.com')
