@@ -23,7 +23,8 @@
     "@adonisjs/session",
     "@adonisjs/view",
     "@adonisjs/lucid",
-    "@adonisjs/auth"
+    "@adonisjs/auth",
+    "@adonisjs/mail"
   ],
   "metaFiles": [
     {
