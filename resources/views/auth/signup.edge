@@ -13,32 +13,29 @@
           <label for="name"></label>
           <input class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600" type="text" name="name" id="name" placeholder="Full Name" />
           @if(flashMessages.has('errors.name'))
-          <small>{{ flashMessages.get("errors.name") }}</small>
+          <small class="text-xs text-red-600">{{ flashMessages.get("errors.name") }}</small>
           @endif
         </div>
         <div>
           <label for="email"></label>
           <input class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600" type="email" name="email" id="email" placeholder="Mobile Number of Email" />
           @if(flashMessages.has('errors.email'))
-          <small>{{ flashMessages.get("errors.email") }}</small>
+          <small class="text-xs text-red-600">{{ flashMessages.get("errors.email") }}</small>
+          @endif
+        </div>
+        <div>
+          <label for="username"></label>
+          <input class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600" type="username" name="username" id="username" placeholder="Username"/>
+          @if(flashMessages.has('errors.username'))
+          <small class="text-xs text-red-600">{{ flashMessages.get("errors.username") }}</small>
           @endif
         </div>
         <div>
           <label for="password"></label>
           <input class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600" type="password" name="password" id="password" placeholder="Password"/>
           @if(flashMessages.has('errors.password'))
-          <small>{{ flashMessages.get("errors.password") }}</small>
+          <small class="text-xs text-red-600">{{ flashMessages.get("errors.password") }}</small>
           @endif
-        </div>
-        <div>
-          <label for="password_confirmation"></label>
-          <input
-          class="w-full bg-gray-200 text-xs border-gray-400 rounded-sm px-2 py-2 border my-1 placeholder-gray-600"
-            type="password_confirmation"
-            name="password_confirmation"
-            id="password_confirmation"
-            placeholder="Confirm Password"
-          />
         </div>
         <div class="mt-3">
           <input class="w-full text-white rounded py-1 px-2" style="background-color: rgba(var(--d69,0,149,246),1);" type="submit" value="Sign Up" />

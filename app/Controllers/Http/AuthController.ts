@@ -9,11 +9,13 @@ export default class AuthController {
             schema: schema.create({
                 name: schema.string(),
                 email: schema.string({}, [rules.email()]),
-                password: schema.string({}, [rules.confirmed()]),
+                username: schema.string({}),
+                password: schema.string({}),
             }),
             messages: {
                 "name.required": "Name is required to sign up",
                 "email.required": "Email is required to sign up",
+                "username.required": "Username is required to sign up",
                 "password.required": "Password is required to sign up",
             },
         });
@@ -21,6 +23,7 @@ export default class AuthController {
         const user = new User();
         user.name = req.name;
         user.email = req.email;
+        user.username = req.username;
         user.password = req.password;
         await user.save();
 
