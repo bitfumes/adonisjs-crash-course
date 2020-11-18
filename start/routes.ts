@@ -11,4 +11,5 @@ Route.post('/signup', 'AuthController.signup')
 Route.post('/login', 'AuthController.login')
 Route.post('/logout', 'AuthController.logout')
 
+Route.get('/accounts/edit', 'ProfilesController.edit').middleware('auth')
 Route.get('/:username', 'ProfilesController.index').middleware('auth')

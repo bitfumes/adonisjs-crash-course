@@ -9,9 +9,21 @@
 
 </head>
 <body>
-    <div class="bg-gray-100 min-h-screen">
-        @section('content')
-        @endsection
+    <nav class="w-full bg-white shadow-md border flex justify-center px-4 py-2">
+        <div class="w-1/2 flex justify-between">
+            <h1 class="text-xl font-semibold">
+                <a href="/">Adonisgram</a>
+            </h1>
+            <div>
+                <img src="" class="h-8 w-8 rounded-full border" alt="profile">
+            </div>
+        </div>
+    </nav>
+    <div class="bg-gray-100 min-h-screen flex justify-center">
+        <div class="w-full md:w-1/2">
+            @section('content')
+            @endsection
+        </div>
     </div>
 </body>
 </html>
