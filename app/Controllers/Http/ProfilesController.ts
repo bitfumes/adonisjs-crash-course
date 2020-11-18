@@ -11,8 +11,8 @@ export default class ProfilesController {
         if (!user) {
             return view.render('errors.not-found')
         }
-
-        return view.render('profile')
+        await user.preload('posts')
+        return view.render('profile', { user })
     }
 
     public async edit({ view }: HttpContextContract) {

@@ -15,8 +15,15 @@
             <h1 class="text-xl font-semibold">
                 <a href="/">Adonisgram</a>
             </h1>
+            @if(auth.isAuthenticated && auth.user.email_verified_at === null)
+            <form action="/verify-email" method="post">
+                <input type="submit" value="Resend" class="px-2 py-1 rounded border">
+            </form>
+            @endif
             <div>
+                @if(auth.isAuthenticated)
             <img src="{{auth.user.avatar}}" class="h-8 w-8 rounded-full border" alt="profile">
+            @endif
             </div>
         </div>
     </nav>

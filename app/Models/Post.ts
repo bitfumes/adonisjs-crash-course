@@ -12,7 +12,7 @@ export default class Post extends BaseModel {
   public caption: string
 
   @column()
-  public user_id: number
+  public userId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

@@ -17,7 +17,7 @@ export default class PostsController {
         caption: schema.string({}),
         image: schema.file({
           size: '2mb',
-          extnames: ['jpg', 'png', 'jpeg'],
+          extnames: ['jpg', 'png', 'jpeg', 'svg'],
         })
       }),
       messages: {
@@ -33,7 +33,7 @@ export default class PostsController {
     const post = new Post()
     post.image = `images/${imageName}`
     post.caption = req.caption
-    post.user_id = auth.user.id
+    post.userId = auth.user.id
     post.save()
     return response.redirect(`/${auth.user.username}`)
   }
