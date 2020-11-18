@@ -1,12 +1,18 @@
 @layout('layouts/app')
 
 @section('content')
-    <h1>Update Your Details</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-        <label for="details">
-            <input type="text" name="details">
-            <input type="file" name="avatar" id="">
-            <input type="submit" value="Update">
-        </label>
+<div class="mt-20 bg-white border rounded p-5">
+    <h1 class="text-center text-2xl my-4">Update Your Details</h1>
+    <form action="" method="post" enctype="multipart/form-data" class="py-2">
+        <div class="">
+            <p class="my-2">Bio</p>
+        <textarea class="border w-full" name="details" rows="4" placeholder="Your Bio Comes Here">{{auth.user.details}}</textarea>
+        </div>
+        <div class="my-5">
+            <p class="my-2">Upload your profile photo</p>
+            <input type="file" name="avatar" class="w-full">
+        </div>
+        <input type="submit" value="Update" class="px-2 py-1 bg-blue-500 text-white border rounded">
     </form>
+</div>
 @endsection

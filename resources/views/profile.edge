@@ -3,7 +3,7 @@
 @section('content')
     <div class="mt-10 flex justify-between flex-wrap w-full">
         <div class="w-4/12 flex justify-center">
-            <img src="" class="w-40 h-40 rounded-full border" alt="">
+        <img src="{{auth.user.avatar}}" class="w-40 h-40 rounded-full border" alt="">
         </div>
         <div class="w-8/12">
             <div class="flex">
@@ -16,10 +16,18 @@
                 <p class="mr-8"><span class="font-semibold">1000</span> followers</p>
                 <p class="mr-8"><span class="font-semibold">10</span> followings</p>
             </div>
+
+            <div class="flex my-5">
+                <p class="mr-8">
+                    {{auth.user.details}}
+                </p>
+            </div>
         </div>
 
         <section class="border-t w-full mt-20">
-            <h2 class="text-center text-sm p-2">POSTS</h2>
+            <h2 class="text-center text-sm p-2">POSTS
+                <i class="fas fa-plus"></i>
+            </h2>
             <article class="grid grid-cols-3 gap-10 px-10">
                 <img src="" class="w-64 h-64 border" alt="">
                 <img src="" class="w-64 h-64 border" alt="">
