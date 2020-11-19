@@ -22,7 +22,9 @@
             @endif
             <div>
                 @if(auth.isAuthenticated)
-            <img src="{{auth.user.avatar}}" class="h-8 w-8 rounded-full border" alt="profile">
+            <a href="/{{auth.user.username}}">
+                    <img src="{{auth.user.avatar}}" class="h-8 w-8 rounded-full border" alt="profile">
+                </a>
             @endif
             </div>
         </div>
