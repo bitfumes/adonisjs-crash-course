@@ -24,13 +24,4 @@
     </div>
     @endeach
 </div>
-
-    @if(auth.isAuthenticated)
-        <h1>{{auth.user.name}}</h1>
-        <form action="/logout" method="post">
-            <button type="submit">Sign Out</button>
-        </form>
-    @else
-        <a href="/login">Login</a>
-    @endif
 @endsection
