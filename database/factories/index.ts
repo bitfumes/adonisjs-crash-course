@@ -11,7 +11,7 @@ export const UserFactory = Factory
             email: faker.internet.email(),
             password: faker.internet.password(),
             details: faker.lorem.paragraph(),
-            avatar: faker.image.avatar(),
+            avatar: faker.image.people(),
             email_verified_at: DateTime.local()
         }
     }).relation('posts', () => PostFactory).build()
@@ -20,6 +20,6 @@ export const PostFactory = Factory
     .define(Post, ({ faker }) => {
         return {
             caption: faker.lorem.paragraph(),
-            image: faker.image.animals(),
+            image: faker.image.image(),
         }
     }).relation('user', () => UserFactory).build()

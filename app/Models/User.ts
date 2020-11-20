@@ -5,6 +5,7 @@ import Mail from '@ioc:Adonis/Addons/Mail'
 import Env from '@ioc:Adonis/Core/Env'
 import Route from '@ioc:Adonis/Core/Route'
 import Post from './Post'
+import Following from './Following'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -39,6 +40,14 @@ export default class User extends BaseModel {
 
   @hasMany(() => Post)
   public posts: HasMany<typeof Post>
+
+  @hasMany(() => Following)
+  public followings: HasMany<typeof Following>
+
+  public async followers() {
+    const followers = await Following.query().where('following_id', this.id)
+    return followers.length
+  }
 
   @beforeSave()
   public static async hashPassword(user: User) {

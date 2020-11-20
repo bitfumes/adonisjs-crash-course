@@ -10,13 +10,23 @@
                 <h1 class="text-2xl tracking-wide">{{ user.username }}</h1>
                 @if(auth.user.id === user.id)
                 <a href="/accounts/edit" class="border border-gray-400 mx-4 rounded px-2 pt-1 font-semibold">Edit Profile</a>
+                @else
+                    @if(auth.user.followings.map(f => f.followingId).includes(user.id))
+                    <form action="{{`/follow/${user.id}?_method=delete`}}" method="post">
+                        <button type="submit" class="text-white text-sm mx-4 mt-1 rounded px-2 py-1 font-semibold" style="background-color: rgba(var(--d69,0,149,246),1);" >Unfollow</button>
+                    </form>
+                    @else
+                        <form action="{{`/follow/${user.id}`}}" method="post">
+                            <button type="submit" class="text-white text-sm mx-4 mt-1 rounded px-2 py-1 font-semibold" style="background-color: rgba(var(--d69,0,149,246),1);" >Follow</button>
+                        </form>
+                    @endif
                 @endif
             </div>
 
             <div class="flex my-5">
                 <p class="mr-8"><span class="font-semibold">{{user.posts.length}}</span> posts</p>
-                <p class="mr-8"><span class="font-semibold">1000</span> followers</p>
-                <p class="mr-8"><span class="font-semibold">10</span> followings</p>
+            <p class="mr-8"><span class="font-semibold">{{followers}}</span> followers</p>
+                <p class="mr-8"><span class="font-semibold">{{user.followings.length}}</span> followings</p>
             </div>
 
             <div class="flex my-5">
@@ -30,9 +40,9 @@
             <h2 class="text-center text-sm p-2">POSTS
                <a href="/posts/create"><i class="fas fa-plus"></i></a>
             </h2>
-            <article class="grid grid-cols-3 gap-10 px-10">
+            <article class="grid grid-cols-3 gap-10 px-1">
                 @each(post in user.posts)
-            <img src="{{post.image}}" class="w-64 h-64 border" alt="">
+            <img src="{{post.image}}" class="w-64 h-48 border" alt="">
                 @endeach
             </article>
         </section>
