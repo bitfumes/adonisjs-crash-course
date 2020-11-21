@@ -12,7 +12,7 @@ export default class ProfilesController {
         }
         await user.preload('posts')
         await user.preload('followings')
-        await auth.user.preload('followings')
+        await auth.user!.preload('followings')
         const followers = await user.followers()
         return view.render('profile', { user, followers })
     }
@@ -22,7 +22,7 @@ export default class ProfilesController {
     }
 
     public async update({ auth, request, response }: HttpContextContract) {
-        const user = auth.user
+        const user = auth.user!
         const avatar = request.file('avatar')
         if (avatar) {
             const imageName = new Date().getTime().toString() + `.${avatar.extname}`

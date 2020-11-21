@@ -1,7 +1,7 @@
 import Application from '@ioc:Adonis/Core/Application'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Post from 'App/Models/Post'
-import { schema, rules } from "@ioc:Adonis/Core/Validator";
+import { schema } from "@ioc:Adonis/Core/Validator";
 
 export default class PostsController {
   public async index({ }: HttpContextContract) {
@@ -33,9 +33,9 @@ export default class PostsController {
     const post = new Post()
     post.image = `images/${imageName}`
     post.caption = req.caption
-    post.userId = auth.user.id
+    post.userId = auth.user!.id
     post.save()
-    return response.redirect(`/${auth.user.username}`)
+    return response.redirect(`/${auth.user!.username}`)
   }
 
   public async show({ }: HttpContextContract) {

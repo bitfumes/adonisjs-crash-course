@@ -9,8 +9,8 @@ export default class HomeController {
         }
 
         await auth.user?.preload('followings')
-        const followings = auth.user?.followings.map(f => f.followingId)
-        const userIds = [auth.user?.id, ...followings ?? []]
+        const followings = auth.user!.followings.map(f => f.followingId)
+        const userIds = [auth.user!.id, ...followings ?? []]
 
         const posts = await Post.query().whereIn('userId', userIds).preload('user').orderBy('created_at', 'desc')
         return view.render('welcome', { posts })

@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
-import { With } from '@ioc:Adonis/Lucid/DatabaseQueryBuilder'
 import User from './User'
 
 export default class Post extends BaseModel {
