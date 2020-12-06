@@ -1,0 +1,35 @@
+name: do-app
+region: ams
+services:
+  - build_command: |-
+      npm run build -- --production && \
+      cd build && \
+      npm ci --production
+    environment_slug: node-js
+    envs:
+      - key: NODE_ENV
+        scope: BUILD_TIME
+        value: development
+      - key: NODE_ENV
+        scope: RUN_TIME
+        value: production
+      - key: APP_KEY
+        scope: RUN_TIME
+        value: D1lO0GV1iIggFmwOKKJYrW0JuLovo-jw
+      - key: SESSION_DRIVER
+        scope: RUN_TIME
+        value: cookie
+      - key: ENV_SILENT
+        scope: RUN_AND_BUILD_TIME
+        value: "true"
+    github:
+      branch: master
+      deploy_on_push: true
+      repo: thetutlage/do-app
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    name: do-app
+    routes:
+      - path: /
+    run_command: npm start
